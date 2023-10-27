@@ -68,9 +68,13 @@ html, body {
   background: #666;
 }
 
+/* Make the layout fit all available space */
+#app, .wrapper {
+  height: 100%;
+}
+
 /* This is the top-level wrapper. It defines the distribution of main elements (header */
 .wrapper {
-  height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 17rem 1fr;
@@ -157,7 +161,7 @@ html, body {
   /* Content footer has a fixed size and if there is too much content it will enable scrolling */
   > .content-footer {
     height: 5rem;
-    overflow: auto;
+    overflow-y: auto;
   }
 }
 
