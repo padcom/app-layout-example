@@ -62,10 +62,10 @@ html, body {
 *::-webkit-scrollbar {
   width: 5px;
   height: 8px;
-  background-color: #aaaaaa;
+  background-color: #ffffff;
 }
 *::-webkit-scrollbar-thumb {
-  background: black;
+  background: #666;
 }
 
 /* This is the top-level wrapper. It defines the distribution of main elements (header */
@@ -209,14 +209,14 @@ html, body {
   }
   > .content-main {
     background-color: #cabffd;
-    border-block: solid 1px white;
+    border-block: solid 1px #df00a7;
   }
   > .content-footer {
-    background-color: #ff4545;
+    background-color: #ffbc7e;
   }
 }
 .footer{
-  background-color: #0cff14;
+  background-color: #f9b3ff;
   border-top: solid 1px black;
 }
 </style>
