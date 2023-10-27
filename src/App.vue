@@ -50,6 +50,7 @@ html, body {
   width: 100vw;
   margin: 0;
   padding: 0;
+  font-family: 'Inter';
 }
 
 /* This makes sizing of elements predictable */
@@ -89,7 +90,7 @@ html, body {
 
     /* TODO: Can this be done in grid-template-rows? */
     .sidebar {
-      max-height: 7rem;
+      max-height: 6rem;
     }
   }
 }
@@ -122,12 +123,20 @@ html, body {
 
 .content {
   grid-area: content;
+}
 
+/* The main application footer is allowed to expand to as much content as it has */
+.footer {
+  grid-area: footer;
+}
+
+/* Those are styles for the main application content area - completely disconnected from main layout */
+.content {
   /* The main content is also defined with a grid */
   display: grid;
   grid-template-rows: auto 1fr auto;
 
-  /* VERY IMPORTANT: This allows the .sidebar-main to scroll when its content exceeds the available space */
+  /* VERY IMPORTANT: This allows the .content-main to scroll when its content exceeds the available space */
   overflow: hidden;
 
   /* The content header has a minimum height but it will expand if there is more content */
@@ -146,11 +155,6 @@ html, body {
     height: 5rem;
     overflow: auto;
   }
-}
-
-/* The main application footer is allowed to expand to as much content as it has */
-.footer {
-  grid-area: footer;
 }
 
 /* This is how you center horizontally and vertically in 2023 */
@@ -184,9 +188,15 @@ html, body {
 /* We give here some colors to the elements to make them easier to spot on the screen */
 .header {
   background-color: #cbd5e1;
+  border-bottom: solid 1px black;
 }
 .sidebar {
   background-color: #f8b4b4;
+  border-right: solid 1px black;
+
+  @media screen and (max-width: 768px) {
+    border-right: none;
+  }
 }
 .content {
   background-color: #faca15;
@@ -202,5 +212,6 @@ html, body {
 }
 .footer{
   background-color: #0cff14;
+  border-top: solid 1px black;
 }
 </style>
