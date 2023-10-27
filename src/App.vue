@@ -1,26 +1,23 @@
 <template>
-  <div class="header">This is header</div>
-  <div class="body">
-    <div v-if="sidebar" class="sidebar">
-      <p>This is sidebar</p>
-      <p>This is sidebar</p>
-      <p>This is sidebar</p>
-      <p>This is sidebar</p>
-      <p>This is sidebar</p>
-      <p>This is sidebar</p>
-      <p>This is sidebar</p>
+  <div class="wrapper" :class="{ 'no-sidebar': noSidebar }">
+    <div class="header">This is header</div>
+
+    <div class="sidebar">
+      <p v-for="i in 10" :key="i">This is sidebar</p>
     </div>
+
     <div class="content">
-      <div class="content-header">This is content header</div>
-      <div class="m-2">
-        <input id="sidebar" v-model="sidebar" type="checkbox" class="mr-2">
-        <label for="sidebar">Toggle sidebar</label>
-      </div>
+      <div class="content-header center-hv">This is content header</div>
       <div class="content-main">
+        <label>
+          Disable sidebar:
+          <input v-model="noSidebar" type="checkbox">
+        </label>
+
         <p>This is main content</p>
-        <p v-for="(item, index) in content" :key="index">{{ item }}</p>
+        <p v-for="i in 10" :key="i">Hello, world!</p>
       </div>
-      <div class="content-footer">This is content footer</div>
+      <div class="content-footer center-hv">This is content footer</div>
     </div>
   </div>
 </template>
@@ -28,70 +25,98 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const sidebar = ref(true)
-const content = ref([] as string[])
-for (let i = 0; i < 100; i++) content.value.push('Hello, world!')
+const noSidebar = ref(false)
 </script>
 
 <style lang="postcss">
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body {
-  @apply h-screen w-screen;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 .wrapper {
-  @apply h-full flex flex-col;
-}
-</style>
-
-<style lang="postcss" scoped>
-.header {
-  @apply bg-slate-300;
-  @apply h-12;
-  @apply shrink-0;
-}
-
-.body {
-  @apply bg-green-300;
-  @apply flex flex-row;
-  @apply overflow-hidden;
+  height: 100vh;
+  display: grid;
+  grid-template: auto 1fr / auto 1fr;
 
   @media screen and (max-width: 700px) {
-    @apply flex-col;
+    grid-template: auto auto 1fr auto / 1fr;
+  }
+}
+
+.header {
+  background-color: #cbd5e1;
+  grid-column: 1/3;
+
+  @media screen and (max-width: 700px) {
+    grid-column: 1/2;
   }
 }
 
 .sidebar {
-  @apply bg-red-300;
-  @apply w-[256px];
-  @apply overflow-y-auto;
+  background-color: #f8b4b4;
+
+  grid-column: 1/2;
+  width: 256px;
+  overflow-y: auto;
 
   @media screen and (max-width: 700px) {
-    @apply w-full max-h-16;
+    grid-rows: 2/3;
+    width: 100%;
+    max-height: 4rem;
   }
 }
 
 .content {
-  @apply bg-yellow-300;
-  @apply h-full;
-  @apply grow flex flex-col;
+  background-color: #faca15;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
   /* This allows the .sidebar to occupy vertical space in mobile */
-  @apply overflow-hidden;
+  overflow: hidden;
+
+  > .content-header {
+    background-color: #acfea4;
+    height: 2.25rem;
+  }
+
+  > .content-main {
+    height: 100%;
+    background-color: rgb(202 191 253);
+
+    /* This makes the content area scrollable vertically */
+    overflow: hidden auto;
+  }
+
+  > .content-footer {
+    background-color: #ff4545;
+    height: 5rem;
+  }
 }
 
-.content-header {
-  @apply bg-blue-300;
-  @apply h-9;
-  @apply shrink-0;
+.no-sidebar {
+  &.wrapper {
+    @media screen and (max-width: 700px) {
+      grid-template: auto 1fr auto / 1fr;
+    }
+  }
+  .sidebar {
+    display: none;
+  }
+  .content {
+    grid-column: 1/3;
+  }
 }
 
-.content-main {
-  @apply bg-purple-300;
-  @apply overflow-y-auto overflow-x-hidden;
-}
-
-.content-footer {
-  @apply bg-fuchsia-300;
-  @apply h-12;
-  @apply shrink-0;
+.center-hv {
+  display: grid;
+  place-items: center;
 }
 </style>
