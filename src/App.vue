@@ -8,7 +8,7 @@
 
     <div class="content">
       <div class="content-header center">
-        This is content header (autosize to fit the content and with min-height)
+        This is content header (autosize to fit the content and with min-height and max-height)
       </div>
       <div class="content-main">
         <label>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="footer">
-      This is the main application footer (autosize to fit the content)
+      This is the main application footer (autosize to fit the content and with max-height)
     </div>
   </div>
 </template>
@@ -128,6 +128,8 @@ html, body {
 /* The main application footer is allowed to expand to as much content as it has */
 .footer {
   grid-area: footer;
+  max-height: 7rem;
+  overflow-y: auto;
 }
 
 /* Those are styles for the main application content area - completely disconnected from main layout */
@@ -136,13 +138,15 @@ html, body {
   display: grid;
   grid-template-rows: auto 1fr auto;
 
-  /* VERY IMPORTANT: This allows the .content-main to scroll when its content exceeds the available space */
-  overflow: hidden;
-
-  /* The content header has a minimum height but it will expand if there is more content */
+  /* The content header has a minimum and maximum height but it will expand if there is more content */
   > .content-header {
     min-height: 3rem;
+    max-height: 7rem;
+    overflow-y: auto;
   }
+
+  /* VERY IMPORTANT: This allows the .content-main to scroll when its content exceeds the available space */
+  overflow: hidden;
 
   /* The main content will use up all the remaining space and if there is even more content it will enable scrolling */
   > .content-main {
@@ -182,7 +186,6 @@ html, body {
 .content-footer,
 .footer {
   padding: var(--p-default);
-  overflow: auto;
 }
 
 /* We give here some colors to the elements to make them easier to spot on the screen */
@@ -196,6 +199,7 @@ html, body {
 
   @media screen and (max-width: 768px) {
     border-right: none;
+    border-bottom: solid 1px black;
   }
 }
 .content {
@@ -204,7 +208,8 @@ html, body {
     background-color: #acfea4;
   }
   > .content-main {
-    background-color: rgb(202 191 253);
+    background-color: #cabffd;
+    border-block: solid 1px white;
   }
   > .content-footer {
     background-color: #ff4545;
