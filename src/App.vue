@@ -86,44 +86,50 @@ html, body {
       'sidebar'
       'content'
       'footer';
-  }
-}
 
-/* This class enables us to hide the sidebar */
-.no-sidebar {
-  & .sidebar {
-    display: none;
+    /* This is an alternative way to specify max height of the sidebar in mobile view. */
+    /* In this case the row height `fit-content(6rem)` would be changed to `auto`. */
+    /*
+    > .sidebar {
+      max-height: 6rem;
+    }
+    */
   }
 
-  &.app-layout {
+  /* Here we define the basic attributes of main elements of the layout */
+  > .header {
+    grid-area: header;
+  }
+
+  > .sidebar {
+    grid-area: sidebar;
+    overflow-y: auto;
+  }
+
+  > .content {
+    grid-area: content;
+    container-type: inline-size;
+  }
+
+  > .footer {
+    grid-area: footer;
+    max-height: 7rem;
+    overflow-y: auto;
+  }
+
+  /* This class enables us to hide the sidebar */
+  &.no-sidebar {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
       'header'
       'content'
       'footer';
+
+    > .sidebar {
+      display: none;
+    }
   }
-}
-
-/* Here we define the basic attributes of main elements of the layout */
-.header {
-  grid-area: header;
-}
-
-.sidebar {
-  grid-area: sidebar;
-  overflow-y: auto;
-}
-
-.content {
-  grid-area: content;
-  container-type: inline-size;
-}
-
-.footer {
-  grid-area: footer;
-  max-height: 7rem;
-  overflow-y: auto;
 }
 
 /* Those are styles for the main application content area - completely disconnected from main layout */
