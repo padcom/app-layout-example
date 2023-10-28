@@ -41,7 +41,7 @@ makeElementsContentEditable(
 
 <style lang="postcss">
 /* Make the entire canvas available to us */
-html, body, .wrapper {
+html, body {
   height: 100vh;
   width: 100vw;
   margin: 0;
@@ -64,22 +64,21 @@ html, body, .wrapper {
   background: #666;
 }
 
-/* This is the top-level wrapper. It defines the distribution of main elements (header */
-.wrapper {
-  /* Please note the height is not overridden here. */
-  /* That is because the grid uses 1fr, which already spans to the entire available space */
-  /* and since the body and html elements have the dimensions of 100vh/vw it is not needed anymore */
+/* This is the top-level application layout. It defines the distribution of main elements (header, sidebar, content and footer) */
+.app-layout {
+  height: 100%;
+
   display: grid;
-  grid-template-rows: auto 1fr auto;
   grid-template-columns: 17rem 1fr;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
     'header header'
     'sidebar content'
     'footer footer';
 
   @media screen and (max-width: 768px) {
-    grid-template-rows: auto auto 1fr auto;
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
       'header'
       'sidebar'
@@ -95,17 +94,17 @@ html, body, .wrapper {
 
 /* This class enables us to hide the sidebar */
 .no-sidebar {
-  &.wrapper {
-    grid-template-rows: auto 1fr auto;
+  & .sidebar {
+    display: none;
+  }
+
+  &.app-layout {
     grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
       'header'
       'content'
       'footer';
-  }
-
-  & .sidebar {
-    display: none;
   }
 }
 
