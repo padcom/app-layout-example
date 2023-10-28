@@ -1,37 +1,33 @@
 <template>
-  <div class="wrapper" :class="{ 'no-sidebar': noSidebar }">
-    <div class="header">This is header (autosize to fit the content)</div>
+  <div class="header">This is header (autosize to fit the content)</div>
 
-    <div class="sidebar">
-      <div class="ellipsis">This is sidebar (in mobile view it has a max-height)</div>
-    </div>
+  <div class="sidebar">
+    <div class="ellipsis">This is sidebar (in mobile view it has a max-height)</div>
+  </div>
 
-    <div class="content">
-      <div class="content-header center">
-        This is content header (autosize to fit the content and with min-height and max-height)
-      </div>
-      <div class="content-main">
-        <label>
-          Disable sidebar:
-          <input v-model="noSidebar" type="checkbox">
-        </label>
-        <div>This is main content (autosize to fill the available space)</div>
-        <div v-for="i in 10" :key="i">Hello, world!</div>
-      </div>
-      <div class="content-footer center">This is content footer (fixed size)</div>
+  <div class="content">
+    <div class="content-header center">
+      This is content header (autosize to fit the content and with min-height and max-height)
     </div>
+    <div class="content-main">
+      <label>
+        Disable sidebar:
+        <input v-model="noSidebar" type="checkbox">
+      </label>
+      <div>This is main content (autosize to fill the available space)</div>
+      <div v-for="i in 10" :key="i">Hello, world!</div>
+    </div>
+    <div class="content-footer center">This is content footer (fixed size)</div>
+  </div>
 
-    <div class="footer">
-      This is the main application footer (autosize to fit the content and with max-height)
-    </div>
+  <div class="footer">
+    This is the main application footer (autosize to fit the content and with max-height)
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { makeElementsContentEditable } from './contenteditable'
-
-const noSidebar = ref(false)
+import { noSidebar } from './no-sidebar'
 
 makeElementsContentEditable(
   '.header',
@@ -69,7 +65,7 @@ html, body {
 }
 
 /* Make the layout fit all available space */
-#app, .wrapper {
+.wrapper {
   height: 100%;
 }
 
