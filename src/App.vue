@@ -41,7 +41,7 @@ makeElementsContentEditable(
 
 <style lang="postcss">
 /* Make the entire canvas available to us */
-html, body {
+html, body, .wrapper {
   height: 100vh;
   width: 100vw;
   margin: 0;
@@ -64,13 +64,11 @@ html, body {
   background: #666;
 }
 
-/* Make the layout fit all available space */
-.wrapper {
-  height: 100%;
-}
-
 /* This is the top-level wrapper. It defines the distribution of main elements (header */
 .wrapper {
+  /* Please note the height is not overridden here. */
+  /* That is because the grid uses 1fr, which already spans to the entire available space */
+  /* and since the body and html elements have the dimensions of 100vh/vw it is not needed anymore */
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 17rem 1fr;
