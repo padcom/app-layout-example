@@ -117,6 +117,7 @@ html, body {
 
 .content {
   grid-area: content;
+  container-type: inline-size;
 }
 
 /* The main application footer is allowed to expand to as much content as it has */
