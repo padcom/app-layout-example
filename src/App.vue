@@ -42,8 +42,8 @@ makeElementsContentEditable(
 <style lang="postcss">
 /* Make the entire canvas available to us */
 html, body {
-  height: 100vh;
-  width: 100vw;
+  height: 100dvh;
+  width: 100dvw;
   margin: 0;
   padding: 0;
   font-family: 'Inter';
@@ -77,7 +77,7 @@ html, body {
     'sidebar content'
     'footer footer';
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 666px) {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
@@ -195,7 +195,7 @@ html, body {
   background-color: #f8b4b4;
   border-right: solid 1px black;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 666px) {
     border-right: none;
     border-bottom: solid 1px black;
   }
