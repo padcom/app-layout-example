@@ -67,6 +67,9 @@ html, body {
 /* This is the top-level application layout. */
 /* It defines the distribution of main elements (header, sidebar, content and footer) */
 .app-layout {
+  /* There is a way to not set the height here and use the body's size automatically */
+  /* html, body { display: grid } */
+  /* It works because a grid automatically expands not only horizontally but also vertically */
   height: 100%;
 
   display: grid;
@@ -202,18 +205,15 @@ html, body {
     border-bottom: solid 1px black;
   }
 }
-.content {
-  background-color: #faca15;
-  > .content-header {
-    background-color: #acfea4;
-  }
-  > .content-main {
-    background-color: #cabffd;
-    border-block: solid 1px #df00a7;
-  }
-  > .content-footer {
-    background-color: #ffbc7e;
-  }
+.content-header {
+  background-color: #acfea4;
+}
+.content-main {
+  background-color: #cabffd;
+  border-block: solid 1px #df00a7;
+}
+.content-footer {
+  background-color: #ffbc7e;
 }
 .footer{
   background-color: #f9b3ff;
