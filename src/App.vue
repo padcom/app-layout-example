@@ -64,7 +64,8 @@ html, body {
   background: #666;
 }
 
-/* This is the top-level application layout. It defines the distribution of main elements (header, sidebar, content and footer) */
+/* This is the top-level application layout. */
+/* It defines the distribution of main elements (header, sidebar, content and footer) */
 .app-layout {
   height: 100%;
 
