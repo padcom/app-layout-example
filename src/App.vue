@@ -79,17 +79,13 @@ html, body {
 
   @media screen and (max-width: 666px) {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr auto;
+    /* In mobile view limit the height of the sidebar so it doesn't take all the available space */
+    grid-template-rows: auto fit-content(6rem) 1fr auto;
     grid-template-areas:
       'header'
       'sidebar'
       'content'
       'footer';
-
-    /* In mobile view limit the height of the sidebar so it doesn't take all the available space */
-    .sidebar {
-      max-height: 6rem;
-    }
   }
 }
 
