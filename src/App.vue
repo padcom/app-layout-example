@@ -70,7 +70,7 @@ html, body {
   height: 100%;
 
   display: grid;
-  grid-template-columns: 17rem 1fr;
+  grid-template-columns: minmax(17rem, 0.3fr) 1fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     'header header'
