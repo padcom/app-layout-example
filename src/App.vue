@@ -120,7 +120,6 @@ html, body {
   container-type: inline-size;
 }
 
-/* The main application footer is allowed to expand to as much content as it has */
 .footer {
   grid-area: footer;
   max-height: 7rem;
