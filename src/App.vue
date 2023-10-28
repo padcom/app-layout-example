@@ -86,7 +86,7 @@ html, body, .wrapper {
       'content'
       'footer';
 
-    /* TODO: Can this be done in grid-template-rows? */
+    /* In mobile view limit the height of the sidebar so it doesn't take all the available space */
     .sidebar {
       max-height: 6rem;
     }
