@@ -40,6 +40,11 @@ makeElementsContentEditable(
 </script>
 
 <style lang="postcss">
+/* This makes sizing of elements predictable */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Make the entire canvas available to us */
 html, body {
   height: 100dvh;
@@ -47,21 +52,6 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Inter';
-}
-
-/* This makes sizing of elements predictable */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* This is how you customize the scrollbar */
-*::-webkit-scrollbar {
-  width: 5px;
-  height: 8px;
-  background-color: #ffffff;
-}
-*::-webkit-scrollbar-thumb {
-  background: #666;
 }
 
 /* This is the top-level application layout. */
@@ -175,6 +165,16 @@ html, body {
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+/* This is how you customize the scrollbar */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #ffffff;
+}
+*::-webkit-scrollbar-thumb {
+  background: #666;
 }
 
 /* We're adding a little bit of padding to all containers - just to make it look better */
