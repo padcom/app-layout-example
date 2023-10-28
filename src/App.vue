@@ -165,7 +165,7 @@ html, body {
 /* This is how we make a too long text end with `...` (ellipsis) */
 .ellipsis {
   overflow-x: hidden;
-  text-wrap: nowrap;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
